@@ -60,7 +60,7 @@
   background: linear-gradient(90deg, #f59e0b, #ef4444);
   color: white;
   cursor: pointer;
-  transition: background 0.3s ease;
+  transition:  0.3s ease;
 }
 
 .btn-start:hover {
