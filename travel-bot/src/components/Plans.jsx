@@ -14,6 +14,7 @@ const Plans = ({ plansText }) => {
   return (
     <section ref={plansRef} className="plans-section">
       <h2>Your Travel Plans</h2>
+      <div className="plans-container">
       {plans.length === 0 && <p>No plans to show.</p>}
       {plans.map((plan, i) => (
         <div key={i} className="plan-card">
@@ -21,6 +22,7 @@ const Plans = ({ plansText }) => {
           <pre>{plan.trim()}</pre>
         </div>
       ))}
+      </div>
     </section>
   );
 };

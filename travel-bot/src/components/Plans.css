@@ -1,0 +1,33 @@
+.plans-section {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background: linear-gradient(to right, #fef3c7, #fde68a);
+  padding: 20px;      
+}
+.plans-section h2{
+    background: linear-gradient(90deg, #f59e0b, #ef4444);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-size: 3.5rem;
+    font-weight: 800;
+    margin-bottom: 0.5rem;
+    line-height: 1.1;
+    letter-spacing: -0.02em;
+    margin-bottom: 20px;
+}
+.plan-card {
+  background-color: white;
+  padding: 20px;
+  margin-right: 20px;   
+  border-radius: 16px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  flex: 0 0 300px;     
+  max-width: 300px;    
+  /* white-space: pre-wrap;  */
+}
+.plans-container{
+    display: flex;
+}
