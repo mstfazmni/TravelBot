@@ -40,8 +40,6 @@ const About = ({ onStartPlanningClick }) => {
               Let's Plan Your Adventure
             </button>
         </div>
-        <div className="divider"></div>
-
     </section>
   );
 };
