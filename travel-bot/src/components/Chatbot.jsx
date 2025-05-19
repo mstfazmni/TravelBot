@@ -1,9 +1,26 @@
-import React from "react";
+import React, {useState} from "react";
 import './Chatbot.css';
 import chatbotIllustration from "../assets/chatbot.png";
+import { getBotResponse } from "../api/openai";
 
 
 const Chatbot = () => {
+    const [messages, setMessages] = useState([]);
+    const [input, setInput] = useState("");
+
+     const handleSend = async () => {
+        const userMsg = input.trim();
+        if (!userMsg) return;
+
+        setMessages([...messages, { sender: "user", text: userMsg }]);
+        setInput("");
+
+        const botReply = await getBotResponse(userMsg);
+        setMessages(prev => [...prev, { sender: "bot", text: botReply }]);
+     };
+
+
+
     return(
         <section className="chatbot-page" id="chatbot">
             <div className="chatbot-container">
@@ -18,16 +35,24 @@ const Chatbot = () => {
                 </div>
 
                 {/* Right sec caht window */}
+
                 <div className="chat-window">
                     <div className="chat-messages">
-                        {/* it'll be dynamic */}
-                        <div className="message bot">👋 Hi! Where are you planning to go?</div>
-                        <div className="message user">Somewhere warm with beaches!</div>
-                        <div className="message bot">🏖️ How about Bali or Cancun? I can build an itinerary for you!</div>                    
+                        {messages.map((msg, index) => (
+                            <div key={index} className={`message ${msg.sender}`}>
+                            {msg.text}
                     </div>
+                        ))}
+                </div>
+
                     <div className="chat-input">
-                        <input type="text" placeholder="Ask TravelBot anything..." />
-                        <button>Send</button>
+                        <input 
+                        type="text"
+                        placeholder="Ask TravelBot anything..." 
+                        value={input} 
+                        onChange={(e) => setInput(e.target.value)}
+                        />
+                        <button onClick={handleSend}>Send</button>
                     </div>
                 </div>
             </div>
