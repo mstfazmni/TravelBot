@@ -1,0 +1,103 @@
+.chatbot-page {
+  background: linear-gradient(to right, #fef3c7, #fde68a); /* Soft Sand Gradient */
+  min-height: 100vh;
+  padding: 4rem 2rem;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.chatbot-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 3rem;
+  max-width: 1200px;
+  margin: 0 auto;
+  align-items: flex-start;
+}
+
+.chatbot-info {
+  flex: 1 1 40%;
+  color: #333;
+}
+
+.chatbot-info h2 {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+  color: #b91c1c;
+}
+
+.chatbot-info p {
+  margin-bottom: 1.5rem;
+  font-size: 1.1rem;
+  line-height: 1.6;
+}
+
+.chatbot-info img {
+  width: 100%;
+  max-width: 300px;
+  border-radius: 12px;
+}
+
+.chat-window {
+  flex: 1 1 55%;
+  background: white;
+  border-radius: 12px;
+  padding: 1.5rem;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+  height: 500px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.chat-messages {
+  flex: 1;
+  overflow-y: auto;
+  padding-right: 10px;
+}
+
+.message {
+  margin-bottom: 1rem;
+  padding: 0.75rem 1rem;
+  border-radius: 12px;
+  max-width: 80%;
+}
+
+.message.bot {
+  background-color: #f3f4f6;
+  align-self: flex-start;
+}
+
+.message.user {
+  background-color: #f59e0b;
+  color: white;
+  align-self: flex-end;
+}
+
+.chat-input {
+  display: flex;
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.chat-input input {
+  flex: 1;
+  padding: 0.75rem 1rem;
+  border-radius: 9999px;
+  border: 1px solid #d1d5db;
+  outline: none;
+}
+
+.chat-input button {
+  background: linear-gradient(90deg, #f59e0b, #ef4444);
+  color: white;
+  font-weight: bold;
+  padding: 0.75rem 1.5rem;
+  border: none;
+  border-radius: 9999px;
+  cursor: pointer;
+  transition: 0.3s ease;
+}
+
+.chat-input button:hover {
+  background: linear-gradient(90deg, #ef4444, #f59e0b);
+}

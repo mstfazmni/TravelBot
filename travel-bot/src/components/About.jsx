@@ -33,13 +33,15 @@ const About = ({ onStartPlanningClick }) => {
             </ul>
         </div>   
       </div>
-
+      
       {/* planning button */}
       <div className="btn-div-start">
             <button className="start-planning-btn" onClick={onStartPlanningClick}>
               Let's Plan Your Adventure
             </button>
         </div>
+        <div className="divider"></div>
+
     </section>
   );
 };

@@ -1,5 +1,6 @@
 import { useRef } from "react";
 import About from "./About";
+import Chatbot from "./Chatbot";
 import "./Home.css";
 
  function Home() {
@@ -37,6 +38,11 @@ import "./Home.css";
         {/* About Section */}
         <div ref={aboutRef}>
             <About onStartPlanningClick={scrollToChatbot}/>
+        </div>
+
+        {/* Chatbot section */}
+        <div id="chatbot">
+            <Chatbot />
         </div>
     </>
   );
