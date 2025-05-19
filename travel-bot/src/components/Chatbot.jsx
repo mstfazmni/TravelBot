@@ -51,6 +51,7 @@ const Chatbot = ({ onPlansReady }) => {
                 
                 Plan 3:
                 - ...
+                itineraries based on these answers:\n
                 - Destination type: ${[...answers, userMsg][0]}
                 - Travel duration: ${[...answers, userMsg][1]} days
                 - Budget: ${[...answers, userMsg][2]}
