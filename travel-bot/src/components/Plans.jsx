@@ -1,4 +1,5 @@
 import React, { useEffect, useRef } from "react";
+import {motion} from 'framer-motion';
 import './Plans.css';
 
 const Plans = ({ plansText }) => {
@@ -13,14 +14,41 @@ const Plans = ({ plansText }) => {
 
   return (
     <section ref={plansRef} className="plans-section">
-      <h2>Your Travel Plans</h2>
+        <motion.h2
+        initial={{ opacity: 0, y: -20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.6 }}
+      >
+        Your Travel Plans
+      </motion.h2>
       <div className="plans-container">
       {plans.length === 0 && <p>No plans to show.</p>}
       {plans.map((plan, i) => (
-        <div key={i} className="plan-card">
+        <motion.div
+          key={i}
+          className="plan-card"
+          initial={{ opacity: 0, y: 40 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5, delay: i * 0.2 }}
+        >
           <h3>Plan {i + 1}</h3>
-          <pre>{plan.trim()}</pre>
-        </div>
+          <div className="plan-card-content">
+            {plan
+              .trim()
+              .split('\n')                      // split plan into lines
+              .map(line => line.trim().replace(/^[-•]\s*/, ''))  // remove "- " from start
+              .map((line, idx) => {
+                const [label, ...rest] = line.split(':');
+                const value = rest.join(':').trim(); // handles ":" in value
+                return (
+                  <div className="plan-line" key={idx}>
+                    <span className="plan-label">{label.trim()}:</span>
+                    <span className="plan-value">{value}</span>
+                  </div>
+                );
+              })}
+          </div>
+        </motion.div>
       ))}
       </div>
     </section>

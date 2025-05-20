@@ -20,34 +20,34 @@ import "./Home.css";
   const handlePlansReady = (plans) => {
     setPlansText(plans);
   };
-const samplePlansText = `
-Plan 1:
-- Title: Beach Bliss in Bali
-- Duration: 5 days
-- Places to visit: Seminyak, Ubud, Nusa Penida
-- Activities: Surfing, temple visits, beach lounging
-- Highlight: Sunset at Uluwatu Temple
-- Estimated Cost: $1200
+  const samplePlansText = `
+  Plan 1:
+  - Title: Beach Bliss in Bali
+  - Duration: 5 days
+  - Places to visit: Seminyak, Ubud, Nusa Penida
+  - Activities: Surfing, temple visits, beach lounging
+  - Highlight: Sunset at Uluwatu Temple
+  - Estimated Cost: $1200
 
-Plan 2:
-- Title: Culture and Cuisine in Kyoto
-- Duration: 7 days
-- Places to visit: Arashiyama, Gion, Fushimi Inari
-- Activities: Tea ceremonies, temple hopping, sushi-making class
-- Highlight: Night walk through historic Gion
-- Estimated Cost: $1600
+  Plan 2:
+  - Title: Culture and Cuisine in Kyoto
+  - Duration: 7 days
+  - Places to visit: Arashiyama, Gion, Fushimi Inari
+  - Activities: Tea ceremonies, temple hopping, sushi-making class
+  - Highlight: Night walk through historic Gion
+  - Estimated Cost: $1600
 
-Plan 3:
-- Title: Adventure in Banff
-- Duration: 4 days
-- Places to visit: Lake Louise, Moraine Lake, Banff Town
-- Activities: Hiking, wildlife spotting, canoeing
-- Highlight: Sunrise hike to Johnston Canyon
-- Estimated Cost: $900
+  Plan 3:
+  - Title: Adventure in Banff
+  - Duration: 4 days
+  - Places to visit: Lake Louise, Moraine Lake, Banff Town
+  - Activities: Hiking, wildlife spotting, canoeing
+  - Highlight: Sunrise hike to Johnston Canyon
+  - Estimated Cost: $900
 
-Drop-in Experience: 
-- Add a hot air balloon ride in Cappadocia to any plan for a magical experience.
-`;
+  Drop-in Experience: 
+  - Add a hot air balloon ride in Cappadocia to any plan for a magical experience.
+  `;
 
   return (
     <>
