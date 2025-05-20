@@ -15,7 +15,7 @@ TravelBot is an AI-powered travel assistant built with React and OpenAI API. It 
 - React.js for frontend UI
 - OpenAI API for AI-powered responses and trip planning
 - CSS for styling
-- Optional: Backend API proxy for OpenAI calls (if needed)
+- Node Js
 
 - ## License
 
