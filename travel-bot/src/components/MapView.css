@@ -1,0 +1,6 @@
+.map-container{
+    background: linear-gradient(to right, #fef3c7, #fde68a); /* Soft Sand Gradient */
+    min-height: 100vh;
+    padding: 4rem 2rem;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}

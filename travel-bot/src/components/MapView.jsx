@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import Spinner from './Spinner'; 
+import './MapView.css';
 import {
   MapContainer,
   TileLayer,
@@ -99,46 +100,48 @@ const MapView = ({ plan }) => {
   const polylinePositions = positions.map(p => p.latlng);
 
   return (
-    <div style={{ padding: '2rem 0', textAlign: 'center' }}>
-      <h3>🌍Map View</h3>
-      <p>All places from your travel plan</p>
+    <section className='map-container' id='mapview'> 
+      <div style={{ padding: '2rem 0', textAlign: 'center' }}>
+        <h3>🌍Map View</h3>
+        <p>All places from your travel plan</p>
 
-      <div
-        style={{
-          height: '500px',
-          width: '90%',
-          margin: '0 auto',
-          borderRadius: '15px',
-          overflow: 'hidden',
-          boxShadow: '0 0 20px rgba(0,0,0,0.2)',
-        }}
-      >
-        <MapContainer
-          center={bounds[0]}
-          zoom={6}
-          scrollWheelZoom={false}
-          style={{ height: '100%', width: '100%' }}
+        <div
+          style={{
+            height: '500px',
+            width: '90%',
+            margin: '0 auto',
+            borderRadius: '15px',
+            overflow: 'hidden',
+            boxShadow: '0 0 20px rgba(0,0,0,0.2)',
+          }}
         >
-          <TileLayer
-            attribution='&copy; <a href="https://carto.com/">CartoDB</a> contributors'
-            url="https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png"
-          />
+          <MapContainer
+            center={bounds[0]}
+            zoom={6}
+            scrollWheelZoom={false}
+            style={{ height: '100%', width: '100%' }}
+          >
+            <TileLayer
+              attribution='&copy; <a href="https://carto.com/">CartoDB</a> contributors'
+              url="https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png"
+            />
 
-          {positions.map((pos, idx) => (
-            <Marker
-              key={idx}
-              position={pos.latlng}
-              icon={getIcon(pos.name)}
-            >
-              <Popup>{pos.name}</Popup>
-            </Marker>
-          ))}
+            {positions.map((pos, idx) => (
+              <Marker
+                key={idx}
+                position={pos.latlng}
+                icon={getIcon(pos.name)}
+              >
+                <Popup>{pos.name}</Popup>
+              </Marker>
+            ))}
 
-          <Polyline positions={polylinePositions} color="#f97316" weight={4} />
-          <FlyToBounds bounds={bounds} />
-        </MapContainer>
+            <Polyline positions={polylinePositions} color="#f97316" weight={4} />
+            <FlyToBounds bounds={bounds} />
+          </MapContainer>
+        </div>
       </div>
-    </div>
+    </section>
   );
 };
 

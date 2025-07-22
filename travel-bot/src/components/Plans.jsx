@@ -15,6 +15,7 @@ const Plans = ({ plansText, onPlanSelect }) => {
     plansRef.current?.scrollIntoView({ behavior: "smooth" });
   }, []);
 
+  // Downloading pdf file of each plan
   const downloadAsPDF = async (planIndex) => {
   const input = document.getElementById(`plan-${planIndex}`);
   if (!input) return;

@@ -35,32 +35,36 @@ const Chatbot = ({ onPlansReady }) => {
         } else {
             // last question answerd
             setAnswers((prev)=> [...prev, userMsg]);
+            
+            const allAnswers = [...answers, userMsg];
 
              // Prepare prompt with all answers for openai
             const prompt = `
-                Please provide 3 travel plans as numbered lists, each with a title and details like duration, places to visit, and activities. Format like:
+                        Please provide 3 travel plans as numbered lists, each with a title and details like duration, places to visit, and activities. Format like:
 
-                Plan 1:
-                - Title: ...
-                - Duration: ...
-                - Places to visit: ...
-                - Activities: ...
+                        Plan 1:
+                        - Title: ...
+                        - Duration: ...
+                        - Places to visit: ...
+                        - Activities: ...
 
-                Plan 2:
-                - ...
-                
-                Plan 3:
-                - ...
-                itineraries based on these answers:\n
-                - Destination type: ${[...answers, userMsg][0]}
-                - Travel duration: ${[...answers, userMsg][1]} days
-                - Budget: ${[...answers, userMsg][2]}
-                - Interests: ${[...answers, userMsg][3]}
+                        Plan 2:
+                        - ...
 
-                Include a unique highlight and estimated cost for each plan.
-                Also suggest one drop-in experience that can be added to any plan.
-                `;
+                        Plan 3:
+                        - ...
 
+                        Itineraries based on these answers:
+
+                        - Destination: ${allAnswers[0]}
+                        - Destination type: ${allAnswers[1]}
+                        - Travel duration: ${allAnswers[2]} days
+                        - Budget: ${allAnswers[3]}
+                        - Interests: ${allAnswers[4]}
+
+                        Include a unique highlight and estimated cost for each plan.
+                        Also suggest one drop-in experience that can be added to any plan.
+                    `;
             // show a loading message
             setMessages((prev)=> [...prev, {sender: "bot" , text: "Let me plan your trip..."}]);
 
