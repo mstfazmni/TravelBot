@@ -3,7 +3,7 @@ import {motion} from 'framer-motion';
 // import { FaMapMarkerAlt } from 'react-icons/fa';
 import './Plans.css';
 
-const Plans = ({ plansText }) => {
+const Plans = ({ plansText, onPlanSelect }) => {
   const plansRef = useRef(null);
 
   useEffect(() => {
@@ -34,6 +34,7 @@ const Plans = ({ plansText }) => {
         >
           <h3>Plan {i + 1}</h3>
           <div className="plan-card-content">
+           
             {plan
               .trim()
               .split('\n')                      // split plan into lines
@@ -48,6 +49,12 @@ const Plans = ({ plansText }) => {
                   </div>
                 );
               })}
+               <button 
+              className="show-map-btn" 
+              onClick={() => onPlanSelect(`Plan ${i + 1}:\n${plan}`)}
+            >
+              Show on Map
+            </button>
           </div>
         </motion.div>
       ))}

@@ -79,3 +79,17 @@
   color: #4b5563;
   flex: 1;
 }
+.show-map-btn {
+  margin-top: 10px;
+  padding: 8px 16px;
+  background-color: #f59e0b;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.show-map-btn:hover {
+  background-color: #d97706;
+}

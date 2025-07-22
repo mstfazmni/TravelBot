@@ -2,11 +2,13 @@ import { useRef, useState } from "react";
 import About from "./About";
 import Chatbot from "./Chatbot";
 import Plans from "./Plans";
+import MapView from "./MapView";
 import "./Home.css";
 
  function Home() {
     const aboutRef = useRef(null);
     const [plansText, setPlansText] = useState(null);
+    const [selectedPlan, setSelectedPlan] = useState(null);
 
     const scrollToAbout = () => {
     aboutRef.current?.scrollIntoView({ behavior: "smooth" });
@@ -107,7 +109,8 @@ import "./Home.css";
         {/* {plansText && <Plans plansText={plansText} />} */}
 
         {/*for testing purposes*/}
-        {<Plans plansText={samplePlansText} />} 
+        {<Plans plansText={samplePlansText} onPlanSelect={setSelectedPlan} />} 
+        {selectedPlan && <MapView plan={selectedPlan} /> }
     </>
   );
 }
