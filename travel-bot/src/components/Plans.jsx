@@ -2,6 +2,11 @@ import React, { useEffect, useRef } from "react";
 import {motion} from 'framer-motion';
 // import { FaMapMarkerAlt } from 'react-icons/fa';
 import './Plans.css';
+import jsPDF from 'jspdf';
+import html2canvas from 'html2canvas';
+import { FaMapMarkedAlt, FaDownload } from "react-icons/fa";
+
+
 
 const Plans = ({ plansText, onPlanSelect }) => {
   const plansRef = useRef(null);
@@ -9,6 +14,22 @@ const Plans = ({ plansText, onPlanSelect }) => {
   useEffect(() => {
     plansRef.current?.scrollIntoView({ behavior: "smooth" });
   }, []);
+
+  const downloadAsPDF = async (planIndex) => {
+  const input = document.getElementById(`plan-${planIndex}`);
+  if (!input) return;
+
+  const canvas = await html2canvas(input);
+  const imgData = canvas.toDataURL('image/png');
+
+  const pdf = new jsPDF('p', 'mm', 'a4');
+  const imgProps = pdf.getImageProperties(imgData);
+  const pdfWidth = pdf.internal.pageSize.getWidth();
+  const pdfHeight = (imgProps.height * pdfWidth) / imgProps.width;
+
+  pdf.addImage(imgData, 'PNG', 0, 0, pdfWidth, pdfHeight);
+  pdf.save(`Plan-${planIndex + 1}.pdf`);
+};
 
   // Split plans text by "Plan 1:", "Plan 2:", etc.
   const plans = plansText?.split(/Plan \d:/).filter(Boolean) || [];
@@ -27,6 +48,7 @@ const Plans = ({ plansText, onPlanSelect }) => {
       {plans.map((plan, i) => (
         <motion.div
           key={i}
+          id={`plan-${i}`} 
           className="plan-card"
           initial={{ opacity: 0, y: 40 }}
           animate={{ opacity: 1, y: 0 }}
@@ -49,12 +71,24 @@ const Plans = ({ plansText, onPlanSelect }) => {
                   </div>
                 );
               })}
-               <button 
-              className="show-map-btn" 
-              onClick={() => onPlanSelect(`Plan ${i + 1}:\n${plan}`)}
-            >
-              Show on Map
-            </button>
+               <div className="plan-actions d-flex">
+                <button 
+                  className="btn bg-warning btn-sm me-1" 
+                  onClick={() => onPlanSelect(`Plan ${i + 1}:\n${plan}`)}
+                >
+                  <FaMapMarkedAlt className="me-2" />
+                  Show on Map
+                </button>
+
+                <button 
+                  className="btn btn-sm"
+                  style={{ backgroundColor: '#c4c4c4ff', color: '#333' }}
+                  onClick={() => downloadAsPDF(i)}
+                >
+                  <FaDownload className="me-2" />
+                  Download PDF
+                </button>
+              </div>
           </div>
         </motion.div>
       ))}

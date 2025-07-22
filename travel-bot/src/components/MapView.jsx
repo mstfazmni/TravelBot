@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import Spinner from './Spinner'; 
 import {
   MapContainer,
   TileLayer,
@@ -92,7 +93,7 @@ const MapView = ({ plan }) => {
     fetchCoords();
   }, [plan]);
 
-  if (positions.length === 0) return <p>Loading interactive map...</p>;
+  if (positions.length === 0) return <Spinner />;
 
   const bounds = positions.map(p => p.latlng);
   const polylinePositions = positions.map(p => p.latlng);

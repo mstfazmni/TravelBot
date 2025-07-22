@@ -32,14 +32,14 @@
 }
 
 .plan-card h3{
-  font-size: 2rem;
-  font-weight: 600;
-  line-height: 1.1;
-  letter-spacing: -0.02em;
-  background-color: #0000005e;
-  padding: 8px 12px;
-  border-radius: 50px;
-  background: linear-gradient(to right, #ffe990, #ffd426);
+  background: linear-gradient(to right, #facc15, #f59e0b);
+  padding: 8px 16px;
+  border-radius: 999px;
+  display: inline-block;
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #1f2937;
+  margin-bottom: 20px;
 }
 .plans-container {
   display: flex;
@@ -78,18 +78,4 @@
 .plan-value {
   color: #4b5563;
   flex: 1;
-}
-.show-map-btn {
-  margin-top: 10px;
-  padding: 8px 16px;
-  background-color: #f59e0b;
-  color: white;
-  border: none;
-  border-radius: 8px;
-  cursor: pointer;
-  transition: background 0.3s ease;
-}
-
-.show-map-btn:hover {
-  background-color: #d97706;
 }
