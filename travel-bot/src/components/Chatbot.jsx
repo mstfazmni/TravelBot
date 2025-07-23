@@ -1,7 +1,8 @@
 import React, {useState} from "react";
 import './Chatbot.css';
-import chatbotIllustration from "../assets/chatbot.png";
+// import chatbotIllustration from "../assets/chatbot.png";
 import { getBotResponse } from "../api/openai";
+import Robot3D from "./Robot3D";
 
 
 const questions = [
@@ -96,7 +97,9 @@ const Chatbot = ({ onPlansReady }) => {
                         Ask anything from “Where should I go in Italy?” to “Build me a 5-day trip in Japan”.
                         TravelBot gives instant answers and plans tailored just for you.
                     </p>
-                    <img src={chatbotIllustration} alt="Chatbot illustration" className="chatbot-img"/>
+                    <div className="chatbot-img">
+                        <Robot3D />
+                    </div>
                 </div>
 
                 {/* Right sec caht window */}
