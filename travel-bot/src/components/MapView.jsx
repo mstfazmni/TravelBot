@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useMemo } from 'react';
 import Spinner from './Spinner'; 
 import './MapView.css';
 import {
@@ -59,10 +59,11 @@ const FlyToBounds = ({ bounds }) => {
   return null;
 };
 
-const MapView = ({ plan }) => {
-  const locationMatch = plan.match(/Places to visit:\s*(.+)/i);
-  const places = locationMatch ? locationMatch[1].split(',').map(p => p.trim()) : [];
-
+  const MapView = ({ plan }) => {
+    const places = useMemo(() => {
+      const locationMatch = plan.match(/Places to visit:\s*(.+)/i);
+      return locationMatch ? locationMatch[1].split(',').map(p => p.trim()) : [];
+    }, [plan]);
   const [positions, setPositions] = useState([]);
 
   useEffect(() => {
@@ -92,7 +93,7 @@ const MapView = ({ plan }) => {
     };
 
     fetchCoords();
-  }, [plan]);
+  }, [places]);
 
   if (positions.length === 0) return <Spinner />;
 
