@@ -101,49 +101,87 @@ const FlyToBounds = ({ bounds }) => {
   const polylinePositions = positions.map(p => p.latlng);
 
   return (
-    <section className='map-container' id='mapview'> 
-      <div style={{ padding: '2rem 0', textAlign: 'center' }}>
-        <h3>🌍Map View</h3>
-        <p>All places from your travel plan</p>
+  <section className="map-container" id="mapview">
+    <div style={{ padding: '2rem 0', textAlign: 'center' }}>
+      <h3>🌍 Map View</h3>
+      <p>All places from your travel plan</p>
+    </div>
 
-        <div
-          style={{
-            height: '500px',
-            width: '90%',
-            margin: '0 auto',
-            borderRadius: '15px',
-            overflow: 'hidden',
-            boxShadow: '0 0 20px rgba(0,0,0,0.2)',
-          }}
-        >
-          <MapContainer
-            center={bounds[0]}
-            zoom={6}
-            scrollWheelZoom={false}
-            style={{ height: '100%', width: '100%' }}
-          >
-            <TileLayer
-              attribution='&copy; <a href="https://carto.com/">CartoDB</a> contributors'
-              url="https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png"
-            />
-
-            {positions.map((pos, idx) => (
-              <Marker
-                key={idx}
-                position={pos.latlng}
-                icon={getIcon(pos.name)}
-              >
-                <Popup>{pos.name}</Popup>
-              </Marker>
-            ))}
-
-            <Polyline positions={polylinePositions} color="#f97316" weight={4} />
-            <FlyToBounds bounds={bounds} />
-          </MapContainer>
-        </div>
+    <div
+      style={{
+        display: 'flex',
+        width: '90%',
+        height: '500px',
+        margin: '0 auto',
+        borderRadius: '15px',
+        overflow: 'hidden',
+        boxShadow: '0 0 20px rgba(0,0,0,0.2)',
+      }}
+    >
+      {/* Left Sidebar */}
+      <div
+        style={{
+          width: '30%',
+          backgroundColor: '#f9fafb',
+          padding: '1rem',
+          overflowY: 'auto',
+          borderRight: '1px solid #e5e7eb',
+        }}
+      >
+        <h4 style={{ marginBottom: '1rem' }}>📌 Places</h4>
+        <ul style={{ listStyle: 'none', padding: 0 }}>
+          {positions.map((pos, idx) => (
+            <li
+              key={idx}
+              style={{
+                marginBottom: '0.75rem',
+                fontSize: '1rem',
+                display: 'flex',
+                alignItems: 'center',
+              }}
+            >
+              <img
+                src={getIcon(pos.name).options.iconUrl}
+                alt="icon"
+                style={{ width: '24px', height: '24px', marginRight: '8px' }}
+              />
+              {pos.name}
+            </li>
+          ))}
+        </ul>
       </div>
-    </section>
-  );
+
+      {/* Right Map */}
+      <div style={{ width: '70%', height: '100%' }}>
+        <MapContainer
+          center={bounds[0]}
+          zoom={6}
+          scrollWheelZoom={false}
+          style={{ height: '100%', width: '100%' }}
+        >
+          <TileLayer
+            attribution='&copy; <a href="https://carto.com/">CartoDB</a> contributors'
+            url="https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png"
+          />
+
+          {positions.map((pos, idx) => (
+            <Marker
+              key={idx}
+              position={pos.latlng}
+              icon={getIcon(pos.name)}
+            >
+              <Popup>{pos.name}</Popup>
+            </Marker>
+          ))}
+
+          <Polyline positions={polylinePositions} color="#f97316" weight={4} />
+          <FlyToBounds bounds={bounds} />
+        </MapContainer>
+      </div>
+    </div>
+  </section>
+);
+
 };
 
 export default MapView;
