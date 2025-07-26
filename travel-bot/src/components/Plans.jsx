@@ -74,9 +74,15 @@ const Plans = ({ plansText, onPlanSelect }) => {
               })}
                <div className="plan-actions d-flex">
                 <button 
-                  className="btn bg-warning btn-sm me-1" 
-                  onClick={() => onPlanSelect(`Plan ${i + 1}:\n${plan}`)}
-                >
+                    className="btn bg-warning btn-sm me-1" 
+                    onClick={() => {
+                      onPlanSelect(`Plan ${i + 1}:\n${plan}`);
+                      const element = document.getElementById('mapview');
+                      if (element) {
+                        element.scrollIntoView({ behavior: 'smooth' });
+                      }
+                    }}
+                  >
                   <FaMapMarkedAlt className="me-2" />
                   Show on Map
                 </button>

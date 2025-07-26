@@ -102,8 +102,8 @@ const FlyToBounds = ({ bounds }) => {
 
   return (
   <section className="map-container" id="mapview">
-    <div style={{ padding: '2rem 0', textAlign: 'center' }}>
-      <h3>🌍 Map View</h3>
+    <div className='map-info-header' style={{ padding: '2rem 0', textAlign: 'center' }}>
+      <h2>Map View</h2>
       <p>All places from your travel plan</p>
     </div>
 

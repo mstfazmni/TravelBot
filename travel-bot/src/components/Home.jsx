@@ -107,7 +107,7 @@ import "./Home.css";
 
         {/* Plans Section: show only when plans are ready */}
         {plansText && <Plans plansText={plansText} onPlanSelect={setSelectedPlan}/>}
-         {selectedPlan && <MapView plan={selectedPlan} /> }
+        {selectedPlan && <MapView plan={selectedPlan} /> }
 
         {/*for testing purposes*/}
         {/* {<Plans plansText={samplePlansText} onPlanSelect={setSelectedPlan} />}  */}
